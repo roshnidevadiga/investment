@@ -1,7 +1,9 @@
 //Form in react that will accept the investments and store them locally
-import React from "react";
+import React, { useRef } from "react";
+import { v4 as uuidv4 } from "uuid";
 //import addInvestment api
 import { addInvestment } from "../api/addInvestment";
+import { INVESTMENT_CATEGORY_TO_NAME_MAP } from "../constants/categories";
 
 //InvestmentForm functional component
 const InvestmentForm = () => {
@@ -14,6 +16,8 @@ const InvestmentForm = () => {
     investment_description: "",
   });
 
+  const formRef = useRef(null);
+
   //setInvestment function to update the state
   const handleChange = (event) => {
     setInvestment({
@@ -25,11 +29,15 @@ const InvestmentForm = () => {
   //Call api on handleSubmit
   const handleSubmit = (event) => {
     event.preventDefault();
-    addInvestment(investment);
+    addInvestment({
+      id: uuidv4(),
+      ...investment,
+    });
+    formRef?.current.reset();
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} ref={formRef}>
       <label>
         Investment name:
         <input type="text" name="investment_name" onChange={handleChange} />
@@ -49,15 +57,11 @@ const InvestmentForm = () => {
         Investment type:
         <select name="investment_type" onChange={handleChange}>
           <option value="">Select investment type</option>
-          <option value="stock">Stock</option>
-          <option value="mutual_fund">Mutual Fund</option>
-          <option value="fd">Normal FD</option>
-          <option value="rd">RD</option>
-          <option value="tax_fd">Tax saving fd</option>
-          <option value="lic">LIC</option>
-          <option value="nps">NPS</option>
-          <option value="smallcase">Small case</option>
-          <option value="other">Other</option>
+          {Object.keys(INVESTMENT_CATEGORY_TO_NAME_MAP).map((key) => (
+            <option key={key} value={key}>
+              {INVESTMENT_CATEGORY_TO_NAME_MAP[key]}
+            </option>
+          ))}
         </select>
       </label>
       <br />
