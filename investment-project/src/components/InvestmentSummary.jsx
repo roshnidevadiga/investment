@@ -7,7 +7,10 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
-import { INVESTMENT_CATEGORY_TO_COLOR_MAP } from "../constants/categories";
+import {
+  INVESTMENT_CATEGORY_TO_COLOR_MAP,
+  INVESTMENT_CATEGORY_TO_NAME_MAP,
+} from "../constants/categories";
 import { formatRupees } from "../utils/numberFormatter";
 
 const CustomTooltip = ({ active, payload }) => {
@@ -15,13 +18,13 @@ const CustomTooltip = ({ active, payload }) => {
     console.log(payload);
     return (
       <div className="pie-chart-custom-tooltip">
-        <p className="label">{`${payload[0].name} : ${formatRupees(
-          payload[0].value
-        )}`}</p>
+        <p className="label">{`${
+          INVESTMENT_CATEGORY_TO_NAME_MAP[payload[0].name]
+        } : ${formatRupees(payload[0].value)}`}</p>
       </div>
     );
   }
-  return null
+  return null;
 };
 
 const InvestmentSummary = () => {
