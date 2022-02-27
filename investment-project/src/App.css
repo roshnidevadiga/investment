@@ -40,3 +40,12 @@
 button {
   font-size: calc(10px + 2vmin);
 }
+
+.investment-summary-pie-chart {
+  margin: 0 auto;
+}
+
+.pie-chart-custom-tooltip {
+  background-color: aliceblue;
+  display: block;
+}

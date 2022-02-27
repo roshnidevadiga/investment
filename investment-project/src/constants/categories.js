@@ -1,7 +1,7 @@
 //category and its form values
 const CATEGORY_STOCK = "stock";
 const CATEGORY_FD = "fd";
-const CATEGORY_MUTUAL = "mutual";
+const CATEGORY_MUTUAL = "mutual_fund";
 const CATEGORY_RD = "rd";
 const CATEGORY_TAX_SAVING_FD = "tax_saving_fd";
 const CATEGORY_LIC = "lic";
@@ -35,12 +35,12 @@ export const INVESTMENT_CATEGORY_TO_NAME_MAP = {
 
 export const INVESTMENT_CATEGORY_TO_COLOR_MAP = {
   [CATEGORY_FD]: "#00bcd4",
-  [CATEGORY_MUTUAL]: "#00bcd4",
-  [CATEGORY_RD]: "#00bcd4",
-  [CATEGORY_TAX_SAVING_FD]: "#00bcd4",
-  [CATEGORY_LIC]: "#00bcd4",
-  [CATEGORY_NPS]: "#00bcd4",
-  [CATEGORY_SMALLCASE]: "#00bcd4",
-  [CATEGORY_OTHER]: "#00bcd4",
-  [CATEGORY_STOCK]: "#00bcd4",
+  [CATEGORY_MUTUAL]: "#cc66ff",
+  [CATEGORY_RD]: "#00cc66",
+  [CATEGORY_TAX_SAVING_FD]: "#0099ff",
+  [CATEGORY_LIC]: "#ff5050",
+  [CATEGORY_NPS]: "#333300",
+  [CATEGORY_SMALLCASE]: "#99ff99",
+  [CATEGORY_OTHER]: "#993333",
+  [CATEGORY_STOCK]: "#e69900",
 };

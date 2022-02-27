@@ -1,5 +1,28 @@
 import React from "react";
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
+import {
+  PieChart,
+  Pie,
+  Sector,
+  Cell,
+  ResponsiveContainer,
+  Tooltip,
+} from "recharts";
+import { INVESTMENT_CATEGORY_TO_COLOR_MAP } from "../constants/categories";
+import { formatRupees } from "../utils/numberFormatter";
+
+const CustomTooltip = ({ active, payload }) => {
+  if (active && payload && payload.length) {
+    console.log(payload);
+    return (
+      <div className="pie-chart-custom-tooltip">
+        <p className="label">{`${payload[0].name} : ${formatRupees(
+          payload[0].value
+        )}`}</p>
+      </div>
+    );
+  }
+  return null
+};
 
 const InvestmentSummary = () => {
   //get data from local storage
@@ -22,8 +45,6 @@ const InvestmentSummary = () => {
     return { name: key, value: parseInt(groupedData[key].value) };
   });
   console.log(data);
-
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({
@@ -54,25 +75,32 @@ const InvestmentSummary = () => {
   return (
     <>
       {/* <ResponsiveContainer width="100%" height="100%"> */}
-        <PieChart width={600} height={600}>
-          <Pie
-            data={data}
-            cx={300}
-            cy={300}
-            labelLine={false}
-            label={renderCustomizedLabel}
-            outerRadius={80}
-            fill="#8884d8"
-            dataKey="value"
-          >
-            {data.map((entry, index) => (
+      <PieChart
+        width={600}
+        height={600}
+        className="investment-summary-pie-chart"
+      >
+        <Pie
+          data={data}
+          cx={300}
+          cy={300}
+          labelLine={false}
+          // label={renderCustomizedLabel}
+          outerRadius={100}
+          fill="#8884d8"
+          dataKey="value"
+        >
+          {data.map((entry, index) => {
+            return (
               <Cell
                 key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
+                fill={INVESTMENT_CATEGORY_TO_COLOR_MAP[entry.name]}
               />
-            ))}
-          </Pie>
-        </PieChart>
+            );
+          })}
+        </Pie>
+        <Tooltip content={<CustomTooltip />} />
+      </PieChart>
       {/* </ResponsiveContainer> */}
     </>
   );
