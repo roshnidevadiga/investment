@@ -4,11 +4,17 @@ import { formatRupees } from "../utils/numberFormatter";
 
 //define columns
 const columns = [
-  { field: "investment_name", headerName: "Investment name", width: 300 },
+  {
+    field: "investment_name",
+    headerName: "Investment name",
+    flex: 2,
+    minWidth: 300,
+  },
   {
     field: "investment_amount",
     headerName: "Investment amount",
-    width: 200,
+    flex: 1,
+    minWidth: 200,
     valueFormatter: (params) => {
       return formatRupees(params.value);
     },
@@ -16,11 +22,14 @@ const columns = [
   {
     field: "investment_date",
     headerName: "Date",
+    flex: 1,
+    minWidth: 200,
   },
   {
     field: "investment_type",
     headerName: "Investment type",
-    description: "This column has a value getter and is not sortable.",
+    flex: 1,
+    minWidth: 200,
   },
 ];
 
