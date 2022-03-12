@@ -7,7 +7,7 @@ import Home from "./Home";
 import InvestmentForm from "./InvestmentForm";
 import AllInvestmentTable from "./AllInvestmentTable";
 import InvestmentSummary from "./InvestmentSummary";
-import InvestmentReminderContainer from "./investmentReminder/InvestmentReminderContainer";
+import InvestmentReminderContainer from "../investmentReminder/components/InvestmentReminderContainer";
 
 const WelcomePage = () => {
     return (
@@ -28,7 +28,7 @@ const WelcomePage = () => {
                         <Link to="/viewInvestmentSummary">View investment summary</Link>
                     </li>
                     <li>
-                        <Link to="/addInvestmentReminder">Add investment reminder</Link>
+                        <Link to="/investmentReminder">Investment reminder</Link>
                     </li>
                 </ul>
                 <Routes>
@@ -37,7 +37,7 @@ const WelcomePage = () => {
                     <Route path="/viewInvestments" element={<AllInvestmentTable />} />
                     <Route path="/viewInvestmentSummary" element={<InvestmentSummary />} />
                     <Route
-                        path="/addInvestmentReminder"
+                        path="/investmentReminder"
                         element={<InvestmentReminderContainer />}
                     />
                 </Routes>
