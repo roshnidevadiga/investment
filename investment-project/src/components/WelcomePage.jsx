@@ -7,38 +7,43 @@ import Home from "./Home";
 import InvestmentForm from "./InvestmentForm";
 import AllInvestmentTable from "./AllInvestmentTable";
 import InvestmentSummary from "./InvestmentSummary";
+import InvestmentReminderContainer from "./investmentReminder/InvestmentReminderContainer";
 
 const WelcomePage = () => {
-  return (
-    <>
-      <h1>Welcome to my investment Dashboard</h1>
-      <BrowserRouter>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/addInvestmet">Add investment</Link>
-          </li>
-          <li>
-            <Link to="/viewInvestments">View all investments</Link>
-          </li>
-          <li>
-            <Link to="/viewInvestmentSummary">View investment summary</Link>
-          </li>
-        </ul>
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/addInvestmet" element={<InvestmentForm />} />
-          <Route path="/viewInvestments" element={<AllInvestmentTable />} />
-          <Route
-            path="/viewInvestmentSummary"
-            element={<InvestmentSummary />}
-          />
-        </Routes>
-      </BrowserRouter>
-    </>
-  );
+    return (
+        <>
+            <h1>Welcome to my investment Dashboard</h1>
+            <BrowserRouter>
+                <ul>
+                    <li>
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li>
+                        <Link to="/addInvestmet">Add investment</Link>
+                    </li>
+                    <li>
+                        <Link to="/viewInvestments">View all investments</Link>
+                    </li>
+                    <li>
+                        <Link to="/viewInvestmentSummary">View investment summary</Link>
+                    </li>
+                    <li>
+                        <Link to="/addInvestmentReminder">Add investment reminder</Link>
+                    </li>
+                </ul>
+                <Routes>
+                    <Route exact path="/" element={<Home />} />
+                    <Route path="/addInvestmet" element={<InvestmentForm />} />
+                    <Route path="/viewInvestments" element={<AllInvestmentTable />} />
+                    <Route path="/viewInvestmentSummary" element={<InvestmentSummary />} />
+                    <Route
+                        path="/addInvestmentReminder"
+                        element={<InvestmentReminderContainer />}
+                    />
+                </Routes>
+            </BrowserRouter>
+        </>
+    );
 };
 
 export default WelcomePage;
