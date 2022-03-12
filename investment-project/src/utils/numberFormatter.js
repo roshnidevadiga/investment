@@ -1,3 +1,6 @@
 export const formatRupees = (amount) => {
-  return `₹${amount.toLocaleString()}`;
+  return Number(amount).toLocaleString("en-IN", {
+    style: "currency",
+    currency: "INR",
+  });
 };
