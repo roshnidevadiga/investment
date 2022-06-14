@@ -1,6 +1,7 @@
 //import react
 import React, { useEffect, useRef } from "react";
 import { useFormik } from "formik";
+import { v4 as uuidv4 } from "uuid";
 //import form controls
 import FormControl from "@mui/material/FormControl";
 import { REMINDER_TYPE_TO_TEXT } from "../../constants/reminderConstants";
@@ -15,7 +16,7 @@ const InvestmentReminderForm = ({ reminderType }) => {
             investment_type: reminderType,
         },
         onSubmit: (values, { resetForm }) => {
-            setReminder(values);
+            setReminder({ ...values, id: uuidv4() });
             //reset formik
             resetForm();
             //reset html form

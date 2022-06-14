@@ -7,3 +7,9 @@ export const setReminder = (reminder) => {
         pushItemToLocalStorage('reminders', reminder);
     }
 }
+
+export const getReminders = () => {
+    if(MOCK_MODE) {
+        return JSON.parse(localStorage.getItem('reminders'));
+    }
+}
